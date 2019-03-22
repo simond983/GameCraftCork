@@ -7,7 +7,7 @@
 class Tile
 {
 public:
-	Tile(sf::Vector2f position, sf::Color color);
+	Tile(sf::Vector2f position, sf::Color color, bool is_rotate);
 	Tile();
 	~Tile();
 
@@ -25,10 +25,12 @@ public:
 
 	void setFallDelay(sf::Int32 fallDelay);
 
+	bool is_rotate_piece = false;
+	sf::Sprite m_sprite;
+
 private:
 	sf::Vector2f m_position;
 	sf::Texture m_texture;
-	sf::Sprite m_sprite;
 
 	sf::Int32 m_fallTimer;
 	sf::Int32 m_fallDelay;
@@ -36,5 +38,7 @@ private:
 
 	static const int WIDTH = 30;
 	static const int HEIGHT = 30;
+
+	
 };
 #endif // !TILE_H

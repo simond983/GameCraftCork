@@ -14,7 +14,7 @@ public:
 	
 	void update(sf::Int32 dt);
 	void render(sf::RenderWindow &window);
-
+	void rotateShape();
 	std::vector<Tile*> getShapeTiles();
 
 	void setPosition(sf::Vector2f position);
@@ -38,6 +38,9 @@ private:
 	void setSquarePosition();
 	void setIPosition();
 	void setTPosition();
+
+
+	void rotate();
 
 	std::vector<Tile*> m_shapeTiles;
 	sf::Vector2f m_position;

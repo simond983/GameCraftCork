@@ -10,15 +10,15 @@ Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Def
 
 
 	for (int i = 0; i < m_columns; i++) {
-		m_tiles.push_back(new Tile(sf::Vector2f(0, 30 * i), sf::Color::Magenta));
+		m_tiles.push_back(new Tile(sf::Vector2f(0, 30 * i), sf::Color::Magenta, false));
 	}
 
 	for (int i = 1; i < 12; i++) {
-		m_tiles.push_back(new Tile(sf::Vector2f(30 * i, 30 * 19), sf::Color::Magenta));
+		m_tiles.push_back(new Tile(sf::Vector2f(30 * i, 30 * 19), sf::Color::Magenta, false));
 	}
 
 	for (int i = 18; i >= 0; i--) {
-		m_tiles.push_back(new Tile(sf::Vector2f(11 * 30, i * 30), sf::Color::Magenta));
+		m_tiles.push_back(new Tile(sf::Vector2f(11 * 30, i * 30), sf::Color::Magenta, false));
 	}
 	
 	m_shapeManager = new ShapeManager();
@@ -124,6 +124,7 @@ void Game::update(sf::Int32 dt)
 {
 
 	m_shapeManager->update(dt);
+
 
 	//for (Tile * t : m_tiles) {
 	//	t->update(dt);

@@ -44,6 +44,10 @@ void ShapeManager::update(sf::Int32 dt)
 	{
 		m_shapeVector.back().setPosition(sf::Vector2f(m_shapeVector.back().getPosition().x - Tile::GetWidth(), m_shapeVector.back().getPosition().y));
 	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+	{
+		m_shapeVector.back().rotateShape();
+	}
 }
 
 ///

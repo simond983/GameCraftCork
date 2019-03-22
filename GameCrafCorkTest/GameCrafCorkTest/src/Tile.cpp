@@ -11,7 +11,7 @@ Tile::Tile()
 ///<summary>
 ///
 ///</summary>
-Tile::Tile(sf::Vector2f position, sf::Color color) : m_position(position)
+Tile::Tile(sf::Vector2f position, sf::Color color, bool is_rotate) : m_position(position), is_rotate_piece(is_rotate)
 {
 	if (!m_texture.loadFromFile("..//GameCrafCorkTest//assets//LegoBlock.png"))
 	{
