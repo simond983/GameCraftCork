@@ -1,7 +1,11 @@
+
+#include "Game.h"
 #include <iostream>
 
 int main()
 {
-	system("PAUSE");
+	Game* game;
+	game = new Game();
+	game->run();
 	return 0;
 }
