@@ -8,7 +8,6 @@ Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Def
 
 	srand(time(0));
 
-	m_testShape = new Shape("T", sf::Vector2f(300, 0));
 
 	for (int i = 0; i < m_columns; i++) {
 		m_tiles.push_back(new Tile(sf::Vector2f(0, 30 * i), false, sf::Color::Magenta));
@@ -21,6 +20,8 @@ Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Def
 	for (int i = 18; i >= 0; i--) {
 		m_tiles.push_back(new Tile(sf::Vector2f(11 * 30, i * 30), false, sf::Color::Magenta));
 	}
+	
+	m_shapeManager = new ShapeManager();
 
 	m_frameTexture.loadFromFile("assets/Frame.png");
 
@@ -30,16 +31,26 @@ Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Def
 
 	m_scoreSprite.setSize(sf::Vector2f(250.0f, 150.0f));
 	m_levelSprite.setSize(sf::Vector2f(250.0f, 150.0f));
-	m_nextSprite.setSize(sf::Vector2f(250.0f, 150.0f));
+	m_nextSprite.setSize(sf::Vector2f(250.0f, 190.0f));
 
 	m_scoreSprite.setPosition(sf::Vector2f(350,75));
 	m_levelSprite.setPosition(sf::Vector2f(350, 250));
 	m_nextSprite.setPosition(sf::Vector2f(350, 425));
 
 	m_font.loadFromFile("arial.ttf");
-	setUpText(m_scoreText, sf::Vector2f(375, 125), "Score: ");
-	setUpText(m_levelText, sf::Vector2f(375, 300), "Level: ");
+
+	std::string level = "Level: " + std::to_string(m_level);
+	std::string score = "Score: " + std::to_string(m_score);
+
+	setUpText(m_scoreText, sf::Vector2f(375, 125), score);
+	setUpText(m_levelText, sf::Vector2f(375, 300), level);
 	setUpText(m_nextBlockText, sf::Vector2f(400, 400), "Next Block: ");
+
+	m_currentShape = generateShape(sf::Vector2f(120.0f, 30.0f));
+	m_nextShape = generateShape(sf::Vector2f(450.0f, 475.0f));
+
+
+	m_shapeManager->addShape(*m_currentShape);
 }
 
 void Game::setUpText(sf::Text& text, sf::Vector2f pos, std::string string) {
@@ -105,7 +116,9 @@ void Game::run()
 void Game::update(sf::Int32 dt)
 {
 
-	m_testShape->update(dt);
+	m_nextShape->update(dt);
+
+	m_shapeManager->update(dt);
 
 	for (Tile * t : m_tiles) {
 		t->update(dt);
@@ -121,13 +134,15 @@ void Game::render()
 {
 	m_window.clear();
 
-	m_testShape->render(m_window);
 
-	//m_test.render(m_window);
 
 	for (Tile * t : m_tiles) {
 		t->render(m_window);
 	}
+
+
+	m_currentShape->render(m_window);
+	m_nextShape->render(m_window);
 
 	m_window.draw(m_scoreSprite);
 	m_window.draw(m_levelSprite);
@@ -138,4 +153,36 @@ void Game::render()
 	m_window.draw(m_nextBlockText);
 
 	m_window.display();
+}
+
+
+Shape* Game::generateShape(sf::Vector2f position)
+{
+
+	Shape *shape = new Shape();
+
+	int num = rand() % 7 + 1;
+	
+	if (num == 1) {
+		shape = new Shape("L", position);
+	}
+	if (num == 2) {
+		shape = new Shape("R", position);
+	}
+	if (num == 3) {
+		shape = new Shape("Z", position);
+	}
+	if (num == 4) {
+		shape = new Shape("S", position);
+	}
+	if (num == 5) {
+		shape = new Shape("Line", position);
+	}
+	if (num == 6) {
+		shape = new Shape("Square", position);
+	}
+	if (num == 7) {
+		shape = new Shape("T", position);
+	}
+	return shape;
 }

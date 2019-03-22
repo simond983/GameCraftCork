@@ -119,13 +119,13 @@
     <ClCompile Include="src\main.cpp" />
     <ClCompile Include="src\Tile.cpp" />
     <ClCompile Include="src\Shape.cpp" />
-    <ClCompile Include="src\TileManager.cpp" />
+    <ClCompile Include="src\ShapeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="include\Game.h" />
+    <ClInclude Include="include\ShapeManager.h" />
     <ClInclude Include="include\Tile.h" />
     <ClInclude Include="include\Shape.h" />
-    <ClInclude Include="include\TileManager.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
