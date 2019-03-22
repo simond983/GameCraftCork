@@ -27,16 +27,22 @@ Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Def
 
 	m_scoreSprite.setSize(sf::Vector2f(250.0f, 150.0f));
 	m_levelSprite.setSize(sf::Vector2f(250.0f, 150.0f));
-	m_nextSprite.setSize(sf::Vector2f(250.0f, 150.0f));
+	m_nextSprite.setSize(sf::Vector2f(250.0f, 190.0f));
 
 	m_scoreSprite.setPosition(sf::Vector2f(350,75));
 	m_levelSprite.setPosition(sf::Vector2f(350, 250));
 	m_nextSprite.setPosition(sf::Vector2f(350, 425));
 
 	m_font.loadFromFile("arial.ttf");
-	setUpText(m_scoreText, sf::Vector2f(375, 125), "Score: ");
-	setUpText(m_levelText, sf::Vector2f(375, 300), "Level: ");
+
+	std::string level = "Level: " + std::to_string(m_level);
+	std::string score = "Score: " + std::to_string(m_score);
+
+	setUpText(m_scoreText, sf::Vector2f(375, 125), score);
+	setUpText(m_levelText, sf::Vector2f(375, 300), level);
 	setUpText(m_nextBlockText, sf::Vector2f(400, 400), "Next Block: ");
+
+
 }
 
 void Game::setUpText(sf::Text& text, sf::Vector2f pos, std::string string) {
@@ -130,4 +136,11 @@ void Game::render()
 	m_window.draw(m_nextBlockText);
 
 	m_window.display();
+}
+
+
+void Game::generateNumber(Tile shape)
+{
+	int num = rand() % 7 + 1;
+	
 }
