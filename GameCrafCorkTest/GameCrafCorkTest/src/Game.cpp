@@ -18,6 +18,27 @@ Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Def
 	for (int i = 18; i >= 0; i--) {
 		m_tiles.push_back(new Tile(sf::Vector2f(9 * 30, i * 30), false, sf::Color::Magenta));
 	}
+
+	m_scoreSprite.setTexture(&m_scoreTexture);
+	m_levelSprite.setTexture(&m_levelTexture);
+
+	m_scoreSprite.setPosition(sf::Vector2f(0,0));
+	m_levelSprite.setPosition(sf::Vector2f(0, 0));
+
+	m_font.loadFromFile("arial.ttf");
+	setUpText(m_scoreText, sf::Vector2f(350, 100), "Score: ");
+	setUpText(m_levelText, sf::Vector2f(350, 250), "Level: ");
+	setUpText(m_nextBlockText, sf::Vector2f(350, 400), "Next Block: ");
+}
+
+void Game::setUpText(sf::Text& text, sf::Vector2f pos, std::string string) {
+	text.setFont(m_font);
+
+	text.setCharacterSize(32.0f);
+
+	text.setPosition(pos);
+
+	text.setString(string);
 }
 
 
@@ -91,6 +112,13 @@ void Game::render()
 	for (Tile * t : m_tiles) {
 		t->render(m_window);
 	}
+
+	m_window.draw(m_scoreSprite);
+	m_window.draw(m_levelSprite);
+
+	m_window.draw(m_scoreText);
+	m_window.draw(m_levelText);
+	m_window.draw(m_nextBlockText);
 
 	m_window.display();
 }

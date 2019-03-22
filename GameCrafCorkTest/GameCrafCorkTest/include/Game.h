@@ -14,6 +14,8 @@ public:
 	Game();
 	~Game();
 	void run();
+
+	void setUpText(sf::Text &text, sf::Vector2f pos, std::string string);
 private:
 	void update(sf::Int32 dt);
 	void render();
@@ -24,5 +26,16 @@ private:
 
 	const int m_rows = 20;
 	const int m_columns = 20;
+
+	sf::Texture m_scoreTexture;
+	sf::Texture m_levelTexture;
+
+	sf::RectangleShape m_scoreSprite;
+	sf::RectangleShape m_levelSprite;
+
+	sf::Font m_font;
+	sf::Text m_scoreText;
+	sf::Text m_levelText;
+	sf::Text m_nextBlockText;
 };
 #endif // !GAME_H
