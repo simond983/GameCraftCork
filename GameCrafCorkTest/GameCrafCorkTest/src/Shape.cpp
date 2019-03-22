@@ -40,11 +40,11 @@ void Shape::update(sf::Int32 dt)
 	if (m_falling)
 	{
 		m_fallTimer += dt;
-
 		if (m_fallTimer > m_fallDelay)
 		{
 			m_position.y += Tile::GetHeight();
-			this->setPosition(m_position);
+			setPosition(m_position);	//	Moves the individual
+
 			m_fallTimer = 0;
 		}
 	}
@@ -106,16 +106,20 @@ void Shape::setPosition(sf::Vector2f position)
 	}
 }
 
+
 ///<summary>
-/// Sets if each tile is falling or not.
+/// Rotates he current shape
 ///</summary>
-void Shape::setFalling(bool falling)
+void Shape::rotateShape()
 {
-	for (Tile* tile : m_shapeTiles)
+	
+	if (m_type != "Square")
 	{
-		tile->setFalling(falling);
+		rotate();
 	}
+	
 }
+
 
 ///<summary>
 /// Makes a shape based on the current type.
@@ -158,10 +162,10 @@ void Shape::getShape()
 ///</summary>
 void Shape::getL()
 {
-	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Yellow));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), sf::Color::Yellow));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + (Tile::GetHeight() * 2)), sf::Color::Yellow));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + (Tile::GetHeight() * 2)), sf::Color::Yellow));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Yellow, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), sf::Color::Yellow, true));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + (Tile::GetHeight() * 2)), sf::Color::Yellow, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + (Tile::GetHeight() * 2)), sf::Color::Yellow, false));
 }
 
 ///<summary>
@@ -169,10 +173,10 @@ void Shape::getL()
 ///</summary>
 void Shape::getR()
 {
-	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Cyan));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), sf::Color::Cyan));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + (Tile::GetHeight() * 2)), sf::Color::Cyan));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y + (Tile::GetHeight() * 2)), sf::Color::Cyan));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Cyan, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), sf::Color::Cyan, true));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + (Tile::GetHeight() * 2)), sf::Color::Cyan, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y + (Tile::GetHeight() * 2)), sf::Color::Cyan, false));
 }
 
 ///<summary>
@@ -180,10 +184,10 @@ void Shape::getR()
 ///</summary>
 void Shape::getZ()
 {
-	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Red));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color::Red));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color::Red));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y + Tile::GetHeight()), sf::Color::Red));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Red, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color::Red, true));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color::Red, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y + Tile::GetHeight()), sf::Color::Red, false));
 }
 
 ///<summary>
@@ -191,10 +195,10 @@ void Shape::getZ()
 ///</summary>
 void Shape::getS()
 {
-	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Green));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y), sf::Color::Green));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color::Green));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - (Tile::GetWidth() * 2), m_position.y + Tile::GetHeight()), sf::Color::Green));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Green, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y), sf::Color::Green, true));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color::Green, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - (Tile::GetWidth() * 2), m_position.y + Tile::GetHeight()), sf::Color::Green, false));
 }
 
 ///<summary>
@@ -202,10 +206,10 @@ void Shape::getS()
 ///</summary>
 void Shape::getSquare()
 {
-	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Magenta));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color::Magenta));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), sf::Color::Magenta));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color::Magenta));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Magenta, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color::Magenta, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), sf::Color::Magenta, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color::Magenta, false));
 }
 
 ///<summary>
@@ -213,10 +217,10 @@ void Shape::getSquare()
 ///</summary>
 void Shape::getI()
 {
-	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Blue));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color::Blue));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y), sf::Color::Blue));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 3), m_position.y), sf::Color::Blue));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Blue, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color::Blue, true));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y), sf::Color::Blue, false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 3), m_position.y), sf::Color::Blue, false));
 }
 
 ///<summary>
@@ -224,10 +228,10 @@ void Shape::getI()
 ///</summary>
 void Shape::getT()
 {
-	m_shapeTiles.push_back(new Tile(m_position, sf::Color(220, 142, 65, 255)));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color(220, 142, 65, 255)));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y), sf::Color(220, 142, 65, 255)));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color(220, 142, 65, 255)));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color(220, 142, 65, 255), false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color(220, 142, 65, 255), true));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y), sf::Color(220, 142, 65, 255), false));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color(220, 142, 65, 255), false));
 }
 
 ///<summary>
@@ -310,4 +314,31 @@ void Shape::setTPosition()
 sf::Vector2f Shape::getPosition()
 {
 	return m_position;
+}
+
+void Shape::setFalling(bool falling)
+{
+	m_falling = falling;
+}
+
+
+///<summary>
+///	
+///</summary>
+void Shape::rotate()
+{
+	sf::Vector2f rotatePos;
+	for (Tile * t : m_shapeTiles) {
+		if (t->is_rotate_piece) {
+			rotatePos = sf::Vector2f(t->getSprite().getPosition().x + 15,t->getSprite().getPosition().y + 15);
+		}
+	}
+	for (Tile * t : m_shapeTiles) {
+		t->getSprite().setOrigin(rotatePos - t->getSprite().getPosition());
+		std::cout << t->getSprite().getOrigin().x << ", " << t->getSprite().getOrigin().y << std::endl;
+		
+		t->getSprite().rotate(90);
+
+		t->getSprite().setOrigin(sf::Vector2f(0, 0));
+	}
 }

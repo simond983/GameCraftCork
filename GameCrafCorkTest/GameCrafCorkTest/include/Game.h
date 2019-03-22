@@ -16,10 +16,8 @@ public:
 	Game();
 	~Game();
 	void run();
-	Shape* generateShape(sf::Vector2f position);
-	void setUpText(sf::Text &text, sf::Vector2f pos, std::string string);
 
-	void nextShape();
+	void setUpText(sf::Text &text, sf::Vector2f pos, std::string string);
 
 private:
 	void update(sf::Int32 dt);
@@ -42,10 +40,6 @@ private:
 	sf::Text m_scoreText;
 	sf::Text m_levelText;
 	sf::Text m_nextBlockText;
-
-
-	Shape* m_currentShape;
-	Shape* m_nextShape;
 
 	ShapeManager* m_shapeManager;
 

@@ -12,9 +12,16 @@ ShapeManager::ShapeManager() :
 {
 	m_leftBound = sf::RectangleShape(sf::Vector2f(30, 600));
 	m_rightBound = sf::RectangleShape(sf::Vector2f(30, 600));
+	m_bottomBound = sf::RectangleShape(sf::Vector2f(360, 30));
 	
 	m_leftBound.setPosition(0, 0);
 	m_rightBound.setPosition(330, 0);
+	m_bottomBound.setPosition(0, 570);
+
+	m_currentShape = generateShape(sf::Vector2f(120.0f, 30.0f));
+	m_nextShape = generateShape(sf::Vector2f(450.0f, 475.0f));
+
+	addShape(*m_currentShape);
 }
 
 /// <summary>
@@ -30,12 +37,7 @@ ShapeManager::~ShapeManager()
 /// </summary>
 void ShapeManager::update(sf::Int32 dt)
 {
-	sf::Vector2f* tempPosition = new sf::Vector2f(m_shapeVector.back().getPosition());
-
-	for (int i = 0; i < m_shapeVector.size(); i++)
-	{
-		m_shapeVector[i].update(dt);
-	}
+	sf::Vector2f* tempPosition = new sf::Vector2f(m_shapeVector.back().getPosition());	
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) && m_controlA == true)
 	{
@@ -91,10 +93,19 @@ void ShapeManager::update(sf::Int32 dt)
 	{
 		m_controlE = true;
 	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+	{
+		m_shapeVector.back().rotateShape();
+	}
 
 	checkBounds(tempPosition);
 	m_shapeVector.back().setPosition(*tempPosition);
 	delete tempPosition;
+
+	for (int i = 0; i < m_shapeVector.size(); i++)
+	{
+		m_shapeVector[i].update(dt);
+	}
 }
 
 /// <summary>
@@ -106,6 +117,9 @@ void ShapeManager::render(sf::RenderWindow &window)
 	{
 		m_shapeVector[i].render(window);
 	}
+
+
+	m_nextShape->render(window);
 }
 
 /// <summary>
@@ -124,6 +138,36 @@ std::vector<Shape> ShapeManager::getShapeVector()
 	return m_shapeVector;
 }
 
+Shape * ShapeManager::generateShape(sf::Vector2f position)
+{
+	Shape *shape = new Shape();
+
+	int num = rand() % 7 + 1;
+
+	if (num == 1) {
+		shape = new Shape("L", position);
+	}
+	if (num == 2) {
+		shape = new Shape("R", position);
+	}
+	if (num == 3) {
+		shape = new Shape("Z", position);
+	}
+	if (num == 4) {
+		shape = new Shape("S", position);
+	}
+	if (num == 5) {
+		shape = new Shape("Line", position);
+	}
+	if (num == 6) {
+		shape = new Shape("Square", position);
+	}
+	if (num == 7) {
+		shape = new Shape("T", position);
+	}
+	return shape;
+}
+
 /// <summary>
 /// 
 /// </summary>
@@ -140,5 +184,19 @@ void ShapeManager::checkBounds(sf::Vector2f* tempPos)
 		{
 			tempPos->x -= Tile::GetWidth();
 		}		
+		
+		if (m_shapeVector.back().getShapeTiles().at(i)->getSprite().getGlobalBounds().intersects(m_bottomBound.getGlobalBounds()))
+		{
+			m_shapeVector.back().setFalling(false);
+			nextShape();
+			m_shapeVector.back().setPosition(sf::Vector2f(300, 0));
+		}
 	}
+}
+
+void ShapeManager::nextShape() {
+	m_nextShape->setPosition(sf::Vector2f(120.0f, 30.0f));
+	addShape(*m_nextShape);
+
+	m_nextShape = generateShape(sf::Vector2f(450.0f, 475.0f));
 }

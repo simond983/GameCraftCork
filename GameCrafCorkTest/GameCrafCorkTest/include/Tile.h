@@ -7,7 +7,7 @@
 class Tile
 {
 public:
-	Tile(sf::Vector2f position, sf::Color color);
+	Tile(sf::Vector2f position, sf::Color color, bool is_rotate);
 	Tile();
 	~Tile();
 
@@ -21,6 +21,8 @@ public:
 	void setPosition(sf::Vector2f position);
 	sf::Sprite getSprite();
 
+	bool is_rotate_piece = false;
+
 private:
 	sf::Vector2f m_position;
 	sf::Texture m_texture;
@@ -28,5 +30,7 @@ private:
 
 	static const int WIDTH = 30;
 	static const int HEIGHT = 30;
+
+	
 };
 #endif // !TILE_H

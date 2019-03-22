@@ -10,15 +10,15 @@ Game::Game() :
 	srand(time(0));
 
 	for (int i = 0; i < m_columns; i++) {
-		m_tiles.push_back(new Tile(sf::Vector2f(0, 30 * i), sf::Color::Magenta));
+		m_tiles.push_back(new Tile(sf::Vector2f(0, 30 * i), sf::Color::Magenta, false));
 	}
 
 	for (int i = 1; i < 12; i++) {
-		m_tiles.push_back(new Tile(sf::Vector2f(30 * i, 30 * 19), sf::Color::Magenta));
+		m_tiles.push_back(new Tile(sf::Vector2f(30 * i, 30 * 19), sf::Color::Magenta, false));
 	}
 
 	for (int i = 18; i >= 0; i--) {
-		m_tiles.push_back(new Tile(sf::Vector2f(11 * 30, i * 30), sf::Color::Magenta));
+		m_tiles.push_back(new Tile(sf::Vector2f(11 * 30, i * 30), sf::Color::Magenta, false));
 	}
 	
 	m_shapeManager = new ShapeManager();
@@ -46,11 +46,7 @@ Game::Game() :
 	setUpText(m_levelText, sf::Vector2f(375, 300), level);
 	setUpText(m_nextBlockText, sf::Vector2f(400, 400), "Next Block: ");
 
-	m_currentShape = generateShape(sf::Vector2f(120.0f, 30.0f));
-	m_nextShape = generateShape(sf::Vector2f(450.0f, 475.0f));
 
-
-	m_shapeManager->addShape(*m_currentShape);
 }
 
 void Game::setUpText(sf::Text& text, sf::Vector2f pos, std::string string) {
@@ -63,12 +59,7 @@ void Game::setUpText(sf::Text& text, sf::Vector2f pos, std::string string) {
 	text.setString(string);
 }
 
-void Game::nextShape() {
-	m_nextShape->setPosition(sf::Vector2f(120.0f, 30.0f));
-	m_shapeManager->addShape(*m_nextShape);
 
-	m_nextShape = generateShape(sf::Vector2f(450.0f, 475.0f));
-}
 
 
 
@@ -142,8 +133,6 @@ void Game::render()
 		t->render(m_window);
 	}
 
-	m_nextShape->render(m_window);
-
 	m_shapeManager->render(m_window);
 
 	m_window.draw(m_scoreSprite);
@@ -155,37 +144,5 @@ void Game::render()
 	m_window.draw(m_nextBlockText);
 
 	m_window.display();
-}
-
-
-Shape* Game::generateShape(sf::Vector2f position)
-{
-
-	Shape *shape = new Shape();
-
-	int num = rand() % 7 + 1;
-	
-	if (num == 1) {
-		shape = new Shape("L", position);
-	}
-	if (num == 2) {
-		shape = new Shape("R", position);
-	}
-	if (num == 3) {
-		shape = new Shape("Z", position);
-	}
-	if (num == 4) {
-		shape = new Shape("S", position);
-	}
-	if (num == 5) {
-		shape = new Shape("Line", position);
-	}
-	if (num == 6) {
-		shape = new Shape("Square", position);
-	}
-	if (num == 7) {
-		shape = new Shape("T", position);
-	}
-	return shape;
 }
 
