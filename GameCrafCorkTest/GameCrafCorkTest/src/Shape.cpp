@@ -6,7 +6,6 @@ Shape::Shape()
 
 Shape::Shape(std::string type, sf::Vector2f pos) : m_position(pos)
 {
-	std::cout << Tile::GetHeight() << std::endl;
 	if (type == "L")
 	{
 		m_shapeTiles.push_back(new Tile(m_position, false, sf::Color::Yellow));
