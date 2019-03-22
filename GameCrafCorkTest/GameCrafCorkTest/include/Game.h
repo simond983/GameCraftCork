@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>
 #include <iostream>
+#include <vector>
 
 #include "Tile.h"
 
@@ -19,6 +20,9 @@ private:
 
 	sf::RenderWindow m_window;
 
-	Tile m_test;
+	std::vector<Tile*> m_tiles;
+
+	const int m_rows = 20;
+	const int m_columns = 20;
 };
 #endif // !GAME_H

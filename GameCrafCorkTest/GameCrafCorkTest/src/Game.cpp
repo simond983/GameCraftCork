@@ -3,11 +3,21 @@
 /// <summary>
 /// Default constructor for the class.
 /// </summary>
-Game::Game() :
-	m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Default),
-	m_test(sf::Vector2f())
-{
+Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Default) {
+
 	srand(time(0));
+
+	for (int i = 0; i < m_columns; i++) {
+		m_tiles.push_back(new Tile(sf::Vector2f(0, 30 * i), false, sf::Color::Magenta));
+	}
+
+	for (int i = 1; i < 10; i++) {
+		m_tiles.push_back(new Tile(sf::Vector2f(30 * i, 30 * 19), false, sf::Color::Magenta));
+	}
+
+	for (int i = 18; i >= 0; i--) {
+		m_tiles.push_back(new Tile(sf::Vector2f(9 * 30, i * 30), false, sf::Color::Magenta));
+	}
 }
 
 
@@ -62,7 +72,9 @@ void Game::run()
 /// </summary>
 void Game::update(sf::Int32 dt)
 {
-	m_test.update(dt);
+	for (Tile * t : m_tiles) {
+		t->update(dt);
+	}
 }
 
 
@@ -74,7 +86,11 @@ void Game::render()
 {
 	m_window.clear();
 
-	m_test.render(m_window);
+	//m_test.render(m_window);
+
+	for (Tile * t : m_tiles) {
+		t->render(m_window);
+	}
 
 	m_window.display();
 }
