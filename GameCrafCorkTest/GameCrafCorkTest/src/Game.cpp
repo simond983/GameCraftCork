@@ -4,7 +4,8 @@
 /// Default constructor for the class.
 /// </summary>
 Game::Game() :
-	m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Default)
+	m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Default),
+	m_test(sf::Vector2f())
 {
 	srand(time(0));
 }
@@ -61,7 +62,7 @@ void Game::run()
 /// </summary>
 void Game::update(sf::Int32 dt)
 {
-	
+	m_test.update(dt);
 }
 
 
@@ -72,6 +73,8 @@ void Game::update(sf::Int32 dt)
 void Game::render()
 {
 	m_window.clear();
+
+	m_test.render(m_window);
 
 	m_window.display();
 }

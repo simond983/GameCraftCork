@@ -5,6 +5,8 @@
 #include <SFML/Audio.hpp>
 #include <iostream>
 
+#include "Tile.h"
+
 class Game
 {
 public:
@@ -16,5 +18,7 @@ private:
 	void render();
 
 	sf::RenderWindow m_window;
+
+	Tile m_test;
 };
 #endif // !GAME_H

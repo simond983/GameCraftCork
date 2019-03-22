@@ -2,14 +2,15 @@
 #define TILE_H
 
 #include "SFML\Graphics.hpp"
+#include <iostream>
 
 class Tile
 {
 public:
-	Tile();
+	Tile(sf::Vector2f position);
 	~Tile();
 
-	void update();
+	void update(sf::Int32 dt);
 	void render(sf::RenderWindow& window);
 
 private:
@@ -17,7 +18,7 @@ private:
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
 
-	bool falling;
+	bool m_falling;
 
 	const int WIDTH = 30;
 	const int HEIGHT = 30;
