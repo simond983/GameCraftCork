@@ -20,6 +20,8 @@ Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Def
 	for (int i = 18; i >= 0; i--) {
 		m_tiles.push_back(new Tile(sf::Vector2f(11 * 30, i * 30), false, sf::Color::Magenta));
 	}
+	
+	m_shapeManager = new ShapeManager();
 
 	m_frameTexture.loadFromFile("assets/Frame.png");
 
@@ -46,6 +48,9 @@ Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Def
 
 	m_currentShape = generateShape(sf::Vector2f(120.0f, 30.0f));
 	m_nextShape = generateShape(sf::Vector2f(450.0f, 475.0f));
+
+
+	m_shapeManager->addShape(m_currentShape);
 }
 
 void Game::setUpText(sf::Text& text, sf::Vector2f pos, std::string string) {
@@ -112,9 +117,9 @@ void Game::run()
 void Game::update(sf::Int32 dt)
 {
 
-
-	m_currentShape->update(dt);
 	m_nextShape->update(dt);
+
+	m_shapeManager->update(dt);
 
 	for (Tile * t : m_tiles) {
 		t->update(dt);

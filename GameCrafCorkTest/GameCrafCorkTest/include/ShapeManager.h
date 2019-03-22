@@ -13,6 +13,8 @@ public:
 
 	void update(sf::Int32 dt);
 	void render(sf::RenderWindow &window);
+
+	void addShape(Shape &shape);
 private:
 	std::vector<Shape> m_shapeVector;
 

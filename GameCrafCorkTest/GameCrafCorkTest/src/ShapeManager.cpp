@@ -31,3 +31,8 @@ void ShapeManager::render(sf::RenderWindow &window)
 		m_shapeVector[i].render(window);
 	}
 }
+
+void ShapeManager::addShape(Shape *shape)
+{
+	m_shapeVector.push_back(shape);
+}

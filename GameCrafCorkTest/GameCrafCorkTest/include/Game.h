@@ -8,6 +8,7 @@
 
 #include "Tile.h"
 #include "Shape.h"
+#include "ShapeManager.h"
 
 class Game
 {
@@ -42,6 +43,8 @@ private:
 
 	Shape* m_currentShape;
 	Shape* m_nextShape;
+
+	Shape* m_shapeManager;
 
 	int m_level = 0;
 	int m_score = 0;
