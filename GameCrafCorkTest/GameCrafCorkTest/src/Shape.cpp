@@ -143,10 +143,10 @@ void Shape::getShape()
 ///</summary>
 void Shape::getL()
 {
-	m_shapeTiles.push_back(new Tile(m_position, false, sf::Color::Yellow));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), false, sf::Color::Yellow));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + (Tile::GetHeight() * 2)), false, sf::Color::Yellow));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + (Tile::GetHeight() * 2)), false, sf::Color::Yellow));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Yellow));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), sf::Color::Yellow));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + (Tile::GetHeight() * 2)), sf::Color::Yellow));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + (Tile::GetHeight() * 2)), sf::Color::Yellow));
 }
 
 ///<summary>
@@ -154,10 +154,10 @@ void Shape::getL()
 ///</summary>
 void Shape::getR()
 {
-	m_shapeTiles.push_back(new Tile(m_position, false, sf::Color::Cyan));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), false, sf::Color::Cyan));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + (Tile::GetHeight() * 2)), false, sf::Color::Cyan));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y + (Tile::GetHeight() * 2)), false, sf::Color::Cyan));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Cyan));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), sf::Color::Cyan));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + (Tile::GetHeight() * 2)), sf::Color::Cyan));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y + (Tile::GetHeight() * 2)), sf::Color::Cyan));
 }
 
 ///<summary>
@@ -165,10 +165,10 @@ void Shape::getR()
 ///</summary>
 void Shape::getZ()
 {
-	m_shapeTiles.push_back(new Tile(m_position, false, sf::Color::Red));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), false, sf::Color::Red));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), false, sf::Color::Red));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y + Tile::GetHeight()), false, sf::Color::Red));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Red));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color::Red));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color::Red));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y + Tile::GetHeight()), sf::Color::Red));
 }
 
 ///<summary>
@@ -176,10 +176,10 @@ void Shape::getZ()
 ///</summary>
 void Shape::getS()
 {
-	m_shapeTiles.push_back(new Tile(m_position, false, sf::Color::Green));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y), false, sf::Color::Green));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y + Tile::GetHeight()), false, sf::Color::Green));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - (Tile::GetWidth() * 2), m_position.y + Tile::GetHeight()), false, sf::Color::Green));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Green));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y), sf::Color::Green));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color::Green));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x - (Tile::GetWidth() * 2), m_position.y + Tile::GetHeight()), sf::Color::Green));
 }
 
 ///<summary>
@@ -187,10 +187,10 @@ void Shape::getS()
 ///</summary>
 void Shape::getSquare()
 {
-	m_shapeTiles.push_back(new Tile(m_position, false, sf::Color::Magenta));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), false, sf::Color::Magenta));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), false, sf::Color::Magenta));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), false, sf::Color::Magenta));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Magenta));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color::Magenta));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x, m_position.y + Tile::GetHeight()), sf::Color::Magenta));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color::Magenta));
 }
 
 ///<summary>
@@ -198,10 +198,10 @@ void Shape::getSquare()
 ///</summary>
 void Shape::getI()
 {
-	m_shapeTiles.push_back(new Tile(m_position, false, sf::Color::Blue));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), false, sf::Color::Blue));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y), false, sf::Color::Blue));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 3), m_position.y), false, sf::Color::Blue));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color::Blue));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color::Blue));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y), sf::Color::Blue));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 3), m_position.y), sf::Color::Blue));
 }
 
 ///<summary>
@@ -209,10 +209,10 @@ void Shape::getI()
 ///</summary>
 void Shape::getT()
 {
-	m_shapeTiles.push_back(new Tile(m_position, false, sf::Color(220, 142, 65, 255)));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), false, sf::Color(220, 142, 65, 255)));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y), false, sf::Color(220, 142, 65, 255)));
-	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), false, sf::Color(220, 142, 65, 255)));
+	m_shapeTiles.push_back(new Tile(m_position, sf::Color(220, 142, 65, 255)));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y), sf::Color(220, 142, 65, 255)));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y), sf::Color(220, 142, 65, 255)));
+	m_shapeTiles.push_back(new Tile(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()), sf::Color(220, 142, 65, 255)));
 }
 
 ///<summary>
@@ -290,4 +290,9 @@ void Shape::setTPosition()
 	m_shapeTiles[1]->setPosition(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y));
 	m_shapeTiles[2]->setPosition(sf::Vector2f(m_position.x + (Tile::GetWidth() * 2), m_position.y));
 	m_shapeTiles[3]->setPosition(sf::Vector2f(m_position.x + Tile::GetWidth(), m_position.y + Tile::GetHeight()));
+}
+
+sf::Vector2f Shape::getPosition()
+{
+	return m_position;
 }

@@ -18,6 +18,7 @@ public:
 	std::vector<Tile*> getShapeTiles();
 
 	void setPosition(sf::Vector2f position);
+	sf::Vector2f getPosition();
 	void setFalling(bool falling);
 
 private:
