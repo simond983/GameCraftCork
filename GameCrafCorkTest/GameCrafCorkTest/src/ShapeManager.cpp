@@ -1,6 +1,11 @@
 #include "ShapeManager.h"
 
-ShapeManager::ShapeManager()
+ShapeManager::ShapeManager() :
+	m_controlA(true),
+	m_controlE(true),
+	m_controlS(true),
+	m_controlD(true),
+	m_controlQ(true)
 {
 	m_leftBound = sf::RectangleShape(sf::Vector2f(30, 600));
 	m_rightBound = sf::RectangleShape(sf::Vector2f(30, 600));
@@ -26,29 +31,59 @@ void ShapeManager::update(sf::Int32 dt)
 		m_shapeVector[i].update(dt);
 	}
 
-	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) && m_controlA == true)
 	{
 		*tempPosition = sf::Vector2f(m_shapeVector.back().getPosition().x - Tile::GetWidth(), m_shapeVector.back().getPosition().y);
+		m_controlA = false;
 	}
 
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) && m_controlD == true)
 	{
 		*tempPosition = sf::Vector2f(m_shapeVector.back().getPosition().x + Tile::GetWidth(), m_shapeVector.back().getPosition().y);
+		m_controlD = false;
 	}
 
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) && m_controlS == true)
 	{
 		*tempPosition = sf::Vector2f(m_shapeVector.back().getPosition().x, m_shapeVector.back().getPosition().y + Tile::GetHeight());
+		m_controlS = false;
 	}
 
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q) && m_controlQ == true)
 	{
 		*tempPosition = sf::Vector2f(m_shapeVector.back().getPosition().x - Tile::GetWidth(), m_shapeVector.back().getPosition().y);
+		m_controlQ = false;
 	}
 
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E))
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E) && m_controlE == true)
 	{
 		*tempPosition = sf::Vector2f(m_shapeVector.back().getPosition().x - Tile::GetWidth(), m_shapeVector.back().getPosition().y);
+		m_controlE = false;
+	}
+
+	 if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
+	{
+		m_controlA = true;
+	}
+
+	 if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D))
+	{
+		m_controlD = true;
+	}
+
+	 if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+	{
+		m_controlS = true;
+	}
+
+	 if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Q))
+	{
+		m_controlQ = true;
+	}
+
+	 if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::E))
+	{
+		m_controlE = true;
 	}
 
 	checkBounds(tempPosition);
