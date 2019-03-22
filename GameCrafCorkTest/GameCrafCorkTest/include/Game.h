@@ -6,6 +6,7 @@
 #include <iostream>
 
 #include "Tile.h"
+#include "Shape.h"
 
 class Game
 {
@@ -19,6 +20,6 @@ private:
 
 	sf::RenderWindow m_window;
 
-	Tile m_test;
+	Shape* m_testShape;
 };
 #endif // !GAME_H
