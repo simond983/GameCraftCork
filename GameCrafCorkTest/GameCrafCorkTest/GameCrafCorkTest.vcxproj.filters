@@ -27,7 +27,7 @@
     <ClCompile Include="src\Shape.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="src\TileManager.cpp">
+    <ClCompile Include="src\ShapeManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
@@ -41,7 +41,7 @@
     <ClInclude Include="include\Shape.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="include\TileManager.h">
+    <ClInclude Include="include\ShapeManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

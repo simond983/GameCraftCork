@@ -8,6 +8,7 @@
 
 #include "Tile.h"
 #include "Shape.h"
+#include "ShapeManager.h"
 
 class Game
 {
@@ -19,6 +20,7 @@ public:
 	void setUpText(sf::Text &text, sf::Vector2f pos, std::string string);
 
 	void nextShape();
+
 private:
 	void update(sf::Int32 dt);
 	void render();
@@ -44,6 +46,8 @@ private:
 
 	Shape* m_currentShape;
 	Shape* m_nextShape;
+
+	ShapeManager* m_shapeManager;
 
 	int m_level = 0;
 	int m_score = 0;
