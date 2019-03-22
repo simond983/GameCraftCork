@@ -85,12 +85,12 @@ void ShapeManager::checkBounds(sf::Vector2f* tempPos)
 		if (m_shapeVector.back().getShapeTiles().at(i)->getSprite().getGlobalBounds().intersects(m_leftBound.getGlobalBounds()))
 		{
 			//std::cout << "COLLISION" << std::endl;
-			tempPos->x += 30;
+			tempPos->x += Tile::GetWidth();
 		}
 
 		else if (m_shapeVector.back().getShapeTiles().at(i)->getSprite().getGlobalBounds().intersects(m_rightBound.getGlobalBounds()))
 		{
-			tempPos->x -= 30;
+			tempPos->x -= Tile::GetWidth();
 		}
 
 		
