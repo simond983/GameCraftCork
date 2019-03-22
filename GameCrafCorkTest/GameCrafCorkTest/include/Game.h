@@ -17,6 +17,8 @@ public:
 	void run();
 	Shape* generateShape(sf::Vector2f position);
 	void setUpText(sf::Text &text, sf::Vector2f pos, std::string string);
+
+	void nextShape();
 private:
 	void update(sf::Int32 dt);
 	void render();

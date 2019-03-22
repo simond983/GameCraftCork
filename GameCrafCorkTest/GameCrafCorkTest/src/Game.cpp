@@ -59,6 +59,12 @@ void Game::setUpText(sf::Text& text, sf::Vector2f pos, std::string string) {
 
 }
 
+void Game::nextShape() {
+	m_currentShape = m_nextShape;
+
+	m_nextShape = generateShape(sf::Vector2f(450.0f, 475.0f));
+}
+
 
 
 /// <summary>
@@ -111,7 +117,6 @@ void Game::run()
 /// </summary>
 void Game::update(sf::Int32 dt)
 {
-
 
 	m_currentShape->update(dt);
 	m_nextShape->update(dt);
