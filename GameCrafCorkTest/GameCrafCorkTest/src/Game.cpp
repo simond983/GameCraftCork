@@ -124,7 +124,6 @@ void Game::update(sf::Int32 dt)
 {
 
 	m_shapeManager->update(dt);
-	checkBounds();
 	//for (Tile * t : m_tiles) {
 	//	t->update(dt);
 	
@@ -190,16 +189,3 @@ Shape* Game::generateShape(sf::Vector2f position)
 	return shape;
 }
 
-void Game::checkBounds()
-{
-	for (int i = 0; i < 4; i++)
-	{
-		for (int j = 0; j < m_tiles.size(); j++)
-		{
-			if (m_shapeManager->getShapeVector().back().getShapeTiles().at(i)->getSprite().getGlobalBounds().intersects(m_tiles.at(j)->getSprite().getGlobalBounds()))
-			{
-				std::cout << "COLLISION" << std::endl;
-			}
-		}
-	}
-}

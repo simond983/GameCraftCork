@@ -18,8 +18,8 @@ public:
 	std::vector<Shape> getShapeVector();
 private:
 	std::vector<Shape> m_shapeVector;
-
-
+	void checkBounds(sf::Vector2f* tempPos);
+	sf::RectangleShape m_rightBound, m_leftBound;
 };
 
 #endif

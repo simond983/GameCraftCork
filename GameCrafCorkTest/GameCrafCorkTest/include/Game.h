@@ -24,7 +24,6 @@ public:
 private:
 	void update(sf::Int32 dt);
 	void render();
-	void checkBounds();
 
 	sf::RenderWindow m_window;
 

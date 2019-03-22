@@ -2,7 +2,11 @@
 
 ShapeManager::ShapeManager()
 {
-
+	m_leftBound = sf::RectangleShape(sf::Vector2f(30, 600));
+	m_rightBound = sf::RectangleShape(sf::Vector2f(30, 600));
+	
+	m_leftBound.setPosition(0, 0);
+	m_rightBound.setPosition(330, 0);
 }
 
 ShapeManager::~ShapeManager()
@@ -47,7 +51,7 @@ void ShapeManager::update(sf::Int32 dt)
 		*tempPosition = sf::Vector2f(m_shapeVector.back().getPosition().x - Tile::GetWidth(), m_shapeVector.back().getPosition().y);
 	}
 
-	
+	checkBounds(tempPosition);
 	m_shapeVector.back().setPosition(*tempPosition);
 	delete tempPosition;
 }
@@ -71,4 +75,24 @@ void ShapeManager::addShape(Shape &shape)
 std::vector<Shape> ShapeManager::getShapeVector()
 {
 	return m_shapeVector;
+}
+
+void ShapeManager::checkBounds(sf::Vector2f* tempPos)
+{
+	for (int i = 0; i < 4; i++)
+	{
+
+		if (m_shapeVector.back().getShapeTiles().at(i)->getSprite().getGlobalBounds().intersects(m_leftBound.getGlobalBounds()))
+		{
+			//std::cout << "COLLISION" << std::endl;
+			tempPos->x += 30;
+		}
+
+		else if (m_shapeVector.back().getShapeTiles().at(i)->getSprite().getGlobalBounds().intersects(m_rightBound.getGlobalBounds()))
+		{
+			tempPos->x -= 30;
+		}
+
+		
+	}
 }
