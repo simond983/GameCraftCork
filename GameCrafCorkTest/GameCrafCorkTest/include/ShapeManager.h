@@ -19,7 +19,7 @@ public:
 private:
 	std::vector<Shape> m_shapeVector;
 	void checkBounds(sf::Vector2f* tempPos);
-	sf::RectangleShape m_rightBound, m_leftBound;
+	sf::RectangleShape m_rightBound, m_leftBound, m_bottomBound;
 
 	bool m_controlA;
 	bool m_controlE;

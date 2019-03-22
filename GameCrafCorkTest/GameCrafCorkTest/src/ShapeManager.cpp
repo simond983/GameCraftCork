@@ -1,5 +1,8 @@
 #include "ShapeManager.h"
 
+/// <summary>
+/// 
+/// </summary>
 ShapeManager::ShapeManager() :
 	m_controlA(true),
 	m_controlE(true),
@@ -14,14 +17,17 @@ ShapeManager::ShapeManager() :
 	m_rightBound.setPosition(330, 0);
 }
 
+/// <summary>
+/// 
+/// </summary>
 ShapeManager::~ShapeManager()
 {
 
 }
 
-///
-// Update the current game objects shapes
-///
+/// <summary>
+/// Update the current game objects shapes
+/// </summary>
 void ShapeManager::update(sf::Int32 dt)
 {
 	sf::Vector2f* tempPosition = new sf::Vector2f(m_shapeVector.back().getPosition());
@@ -91,9 +97,9 @@ void ShapeManager::update(sf::Int32 dt)
 	delete tempPosition;
 }
 
-///
-// Draw the current game objects shapes
-///
+/// <summary>
+/// 
+/// </summary>
 void ShapeManager::render(sf::RenderWindow &window)
 {
 	for (int i = 0; i < m_shapeVector.size(); i++)
@@ -102,32 +108,37 @@ void ShapeManager::render(sf::RenderWindow &window)
 	}
 }
 
+/// <summary>
+/// 
+/// </summary>
 void ShapeManager::addShape(Shape &shape)
 {
 	m_shapeVector.push_back(shape);
 }
 
+/// <summary>
+/// 
+/// </summary>
 std::vector<Shape> ShapeManager::getShapeVector()
 {
 	return m_shapeVector;
 }
 
+/// <summary>
+/// 
+/// </summary>
 void ShapeManager::checkBounds(sf::Vector2f* tempPos)
 {
 	for (int i = 0; i < 4; i++)
 	{
-
 		if (m_shapeVector.back().getShapeTiles().at(i)->getSprite().getGlobalBounds().intersects(m_leftBound.getGlobalBounds()))
 		{
 			//std::cout << "COLLISION" << std::endl;
 			tempPos->x += Tile::GetWidth();
 		}
-
 		else if (m_shapeVector.back().getShapeTiles().at(i)->getSprite().getGlobalBounds().intersects(m_rightBound.getGlobalBounds()))
 		{
 			tempPos->x -= Tile::GetWidth();
-		}
-
-		
+		}		
 	}
 }

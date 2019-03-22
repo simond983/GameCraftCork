@@ -21,19 +21,10 @@ public:
 	void setPosition(sf::Vector2f position);
 	sf::Sprite getSprite();
 
-	bool isFalling();
-	void setFalling(bool falling);
-
-	void setFallDelay(sf::Int32 fallDelay);
-
 private:
 	sf::Vector2f m_position;
 	sf::Texture m_texture;
 	sf::Sprite m_sprite;
-
-	sf::Int32 m_fallTimer;
-	sf::Int32 m_fallDelay;
-	bool m_falling;
 
 	static const int WIDTH = 30;
 	static const int HEIGHT = 30;

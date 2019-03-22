@@ -4,10 +4,10 @@
 /// Default constructor for the class.
 /// </summary>
 
-Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Default) {
-
+Game::Game() : 
+	m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Default) 
+{
 	srand(time(0));
-
 
 	for (int i = 0; i < m_columns; i++) {
 		m_tiles.push_back(new Tile(sf::Vector2f(0, 30 * i), sf::Color::Magenta));

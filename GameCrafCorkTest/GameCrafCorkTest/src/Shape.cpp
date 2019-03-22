@@ -39,7 +39,6 @@ void Shape::update(sf::Int32 dt)
 
 	if (m_falling)
 	{
-
 		m_fallTimer += dt;
 
 		if (m_fallTimer > m_fallDelay)
