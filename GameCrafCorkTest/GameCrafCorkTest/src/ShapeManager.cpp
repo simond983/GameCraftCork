@@ -5,7 +5,8 @@ ShapeManager::ShapeManager() :
 	m_controlE(true),
 	m_controlS(true),
 	m_controlD(true),
-	m_controlQ(true)
+	m_controlQ(true),
+	m_controlW(true)
 {
 	m_leftBound = sf::RectangleShape(sf::Vector2f(30, 600));
 	m_rightBound = sf::RectangleShape(sf::Vector2f(30, 600));
@@ -60,6 +61,11 @@ void ShapeManager::update(sf::Int32 dt)
 		*tempPosition = sf::Vector2f(m_shapeVector.back().getPosition().x - Tile::GetWidth(), m_shapeVector.back().getPosition().y);
 		m_controlE = false;
 	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W) && m_controlW == true)
+	{
+		m_shapeVector.back().rotateShape();
+		m_controlW = false;
+	}
 
 	 if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A))
 	{
@@ -85,10 +91,12 @@ void ShapeManager::update(sf::Int32 dt)
 	{
 		m_controlE = true;
 	}
-	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
+	
+	 if (!sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W))
 	{
-		m_shapeVector.back().rotateShape();
+		m_controlW = true;
 	}
+	
 
 	checkBounds(tempPosition);
 	m_shapeVector.back().setPosition(*tempPosition);

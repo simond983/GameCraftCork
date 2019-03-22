@@ -26,6 +26,7 @@ private:
 	bool m_controlS;
 	bool m_controlD;
 	bool m_controlQ;
+	bool m_controlW;
 };
 
 #endif
