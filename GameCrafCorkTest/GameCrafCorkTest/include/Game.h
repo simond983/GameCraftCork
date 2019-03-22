@@ -15,7 +15,7 @@ public:
 	Game();
 	~Game();
 	void run();
-	void generateNumber(Tile shape);
+	Shape* generateShape(sf::Vector2f position);
 	void setUpText(sf::Text &text, sf::Vector2f pos, std::string string);
 private:
 	void update(sf::Int32 dt);
@@ -23,7 +23,6 @@ private:
 
 	sf::RenderWindow m_window;
 
-	Shape* m_testShape;
 	std::vector<Tile*> m_tiles;
 
 	const int m_rows = 20;
@@ -41,8 +40,8 @@ private:
 	sf::Text m_nextBlockText;
 
 
-	Tile m_currentTile;
-	Tile m_nextTile;
+	Shape* m_currentShape;
+	Shape* m_nextShape;
 
 	int m_level = 0;
 	int m_score = 0;
