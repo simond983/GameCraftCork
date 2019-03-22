@@ -7,7 +7,8 @@
 class Tile
 {
 public:
-	Tile(sf::Vector2f position);
+	Tile(sf::Vector2f position, bool falling, sf::Color color);
+	Tile();
 	~Tile();
 
 	void update(sf::Int32 dt);

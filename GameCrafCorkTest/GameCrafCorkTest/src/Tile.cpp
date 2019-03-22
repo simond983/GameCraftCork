@@ -1,7 +1,8 @@
 #include "Tile.h"
 
 //
-Tile::Tile(sf::Vector2f position) : m_position(position)
+
+Tile::Tile(sf::Vector2f position, bool falling, sf::Color color) : m_position(position), m_falling(falling)
 {
 	if (!m_texture.loadFromFile("..//GameCrafCorkTest//assets//LegoBlock.png"))
 	{
@@ -9,11 +10,15 @@ Tile::Tile(sf::Vector2f position) : m_position(position)
 	}
 
 	m_sprite.setTexture(m_texture);	
-	m_sprite.setPosition(m_position);
+	m_sprite.setPosition(position);
+	m_sprite.setColor(color);
 
 	m_fallDelay = 1000;
 	m_fallTimer = 0;
-	m_falling = true;
+}
+
+Tile::Tile()
+{
 }
 
 //

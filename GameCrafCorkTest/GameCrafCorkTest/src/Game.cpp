@@ -3,11 +3,54 @@
 /// <summary>
 /// Default constructor for the class.
 /// </summary>
-Game::Game() :
-	m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Default)
-{
+
+Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Default) {
+
 	srand(time(0));
+
 	m_testShape = new Shape("T", sf::Vector2f(300, 0));
+
+	for (int i = 0; i < m_columns; i++) {
+		m_tiles.push_back(new Tile(sf::Vector2f(0, 30 * i), false, sf::Color::Magenta));
+	}
+
+	for (int i = 1; i < 12; i++) {
+		m_tiles.push_back(new Tile(sf::Vector2f(30 * i, 30 * 19), false, sf::Color::Magenta));
+	}
+
+	for (int i = 18; i >= 0; i--) {
+		m_tiles.push_back(new Tile(sf::Vector2f(11 * 30, i * 30), false, sf::Color::Magenta));
+	}
+
+	m_frameTexture.loadFromFile("assets/Frame.png");
+
+	m_scoreSprite.setTexture(&m_frameTexture);
+	m_levelSprite.setTexture(&m_frameTexture);
+	m_nextSprite.setTexture(&m_frameTexture);
+
+	m_scoreSprite.setSize(sf::Vector2f(250.0f, 150.0f));
+	m_levelSprite.setSize(sf::Vector2f(250.0f, 150.0f));
+	m_nextSprite.setSize(sf::Vector2f(250.0f, 150.0f));
+
+	m_scoreSprite.setPosition(sf::Vector2f(350,75));
+	m_levelSprite.setPosition(sf::Vector2f(350, 250));
+	m_nextSprite.setPosition(sf::Vector2f(350, 425));
+
+	m_font.loadFromFile("arial.ttf");
+	setUpText(m_scoreText, sf::Vector2f(375, 125), "Score: ");
+	setUpText(m_levelText, sf::Vector2f(375, 300), "Level: ");
+	setUpText(m_nextBlockText, sf::Vector2f(400, 400), "Next Block: ");
+}
+
+void Game::setUpText(sf::Text& text, sf::Vector2f pos, std::string string) {
+	text.setFont(m_font);
+
+	text.setCharacterSize(32.0f);
+
+	text.setPosition(pos);
+
+	text.setString(string);
+
 }
 
 
@@ -62,7 +105,12 @@ void Game::run()
 /// </summary>
 void Game::update(sf::Int32 dt)
 {
+
 	m_testShape->update(dt);
+
+	for (Tile * t : m_tiles) {
+		t->update(dt);
+	}
 }
 
 
@@ -75,6 +123,20 @@ void Game::render()
 	m_window.clear();
 
 	m_testShape->render(m_window);
+
+	//m_test.render(m_window);
+
+	for (Tile * t : m_tiles) {
+		t->render(m_window);
+	}
+
+	m_window.draw(m_scoreSprite);
+	m_window.draw(m_levelSprite);
+	m_window.draw(m_nextSprite);
+
+	m_window.draw(m_scoreText);
+	m_window.draw(m_levelText);
+	m_window.draw(m_nextBlockText);
 
 	m_window.display();
 }
