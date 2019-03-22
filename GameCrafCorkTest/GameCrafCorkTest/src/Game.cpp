@@ -124,8 +124,6 @@ void Game::update(sf::Int32 dt)
 {
 
 	m_shapeManager->update(dt);
-
-
 	//for (Tile * t : m_tiles) {
 	//	t->update(dt);
 	
@@ -190,3 +188,4 @@ Shape* Game::generateShape(sf::Vector2f position)
 	}
 	return shape;
 }
+

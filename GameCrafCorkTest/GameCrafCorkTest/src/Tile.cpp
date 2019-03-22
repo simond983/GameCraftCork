@@ -107,3 +107,8 @@ void Tile::setFallDelay(sf::Int32 fallDelay)
 {
 	m_fallDelay = fallDelay;
 }
+
+sf::Sprite Tile::getSprite()
+{
+	return m_sprite;
+}

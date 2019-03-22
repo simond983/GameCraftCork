@@ -19,6 +19,7 @@ public:
 
 	sf::Vector2f getPosition();
 	void setPosition(sf::Vector2f position);
+	sf::Sprite getSprite();
 
 	bool isFalling();
 	void setFalling(bool falling);
