@@ -15,8 +15,10 @@ public:
 	void render(sf::RenderWindow &window);
 
 	void addShape(Shape &shape);
+	std::vector<Shape> getShapeVector();
 private:
 	std::vector<Shape> m_shapeVector;
+
 
 };
 
