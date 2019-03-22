@@ -1,7 +1,16 @@
 #include "Tile.h"
 
-//
+///<summary>
+///
+///</summary>
+Tile::Tile()
+{
 
+}
+
+///<summary>
+///
+///</summary>
 Tile::Tile(sf::Vector2f position, bool falling, sf::Color color) : m_position(position), m_falling(falling)
 {
 	if (!m_texture.loadFromFile("..//GameCrafCorkTest//assets//LegoBlock.png"))
@@ -17,17 +26,17 @@ Tile::Tile(sf::Vector2f position, bool falling, sf::Color color) : m_position(po
 	m_fallTimer = 0;
 }
 
-Tile::Tile()
-{
-}
-
-//
+///<summary>
+///
+///</summary>
 Tile::~Tile()
 {
 
 }
 
-//
+///<summary>
+///
+///</summary>
 void Tile::update(sf::Int32 dt)
 {
 	if (m_falling)
@@ -48,18 +57,66 @@ void Tile::update(sf::Int32 dt)
 
 }
 
-//
+///<summary>
+///
+///</summary>
 void Tile::render(sf::RenderWindow & window)
 {
 	window.draw(m_sprite);
 }
 
+///<summary>
+///
+///</summary>
 int Tile::GetWidth()
 {
 	return WIDTH;
 }
 
+///<summary>
+///
+///</summary>
 int Tile::GetHeight()
 {
 	return HEIGHT;
+}
+
+///<summary>
+///
+///</summary>
+sf::Vector2f Tile::getPosition()
+{
+	return m_position;
+}
+
+///<summary>
+///
+///</summary>
+void Tile::setPosition(sf::Vector2f position)
+{
+	m_position = position;
+}
+
+///<summary>
+///
+///</summary>
+bool Tile::isFalling()
+{
+	return m_falling;
+}
+
+///<summary>
+///
+///</summary>
+void Tile::setFalling(bool falling)
+{
+	m_falling = falling;
+}
+
+///<summary>
+///	The amount of time before the tile moves.
+///</summary>
+void Tile::setFallDelay(sf::Int32 fallDelay)
+{
+	m_fallDelay = fallDelay;
 }

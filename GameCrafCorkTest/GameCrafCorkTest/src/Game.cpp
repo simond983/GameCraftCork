@@ -50,7 +50,6 @@ void Game::setUpText(sf::Text& text, sf::Vector2f pos, std::string string) {
 	text.setPosition(pos);
 
 	text.setString(string);
-
 }
 
 

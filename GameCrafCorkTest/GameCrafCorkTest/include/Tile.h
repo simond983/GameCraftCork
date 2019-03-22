@@ -17,6 +17,14 @@ public:
 	static int GetWidth();
 	static int GetHeight();
 
+	sf::Vector2f getPosition();
+	void setPosition(sf::Vector2f position);
+
+	bool isFalling();
+	void setFalling(bool falling);
+
+	void setFallDelay(sf::Int32 fallDelay);
+
 private:
 	sf::Vector2f m_position;
 	sf::Texture m_texture;
