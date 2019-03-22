@@ -7,6 +7,7 @@
 #include <vector>
 
 #include "Tile.h"
+#include "Shape.h"
 
 class Game
 {
@@ -22,6 +23,7 @@ private:
 
 	sf::RenderWindow m_window;
 
+	Shape* m_testShape;
 	std::vector<Tile*> m_tiles;
 
 	const int m_rows = 20;

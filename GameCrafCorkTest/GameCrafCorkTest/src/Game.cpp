@@ -3,9 +3,12 @@
 /// <summary>
 /// Default constructor for the class.
 /// </summary>
+
 Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Default) {
 
 	srand(time(0));
+
+	m_testShape = new Shape("T", sf::Vector2f(300, 0));
 
 	for (int i = 0; i < m_columns; i++) {
 		m_tiles.push_back(new Tile(sf::Vector2f(0, 30 * i), false, sf::Color::Magenta));
@@ -53,6 +56,7 @@ void Game::setUpText(sf::Text& text, sf::Vector2f pos, std::string string) {
 	text.setPosition(pos);
 
 	text.setString(string);
+
 }
 
 
@@ -107,6 +111,9 @@ void Game::run()
 /// </summary>
 void Game::update(sf::Int32 dt)
 {
+
+	m_testShape->update(dt);
+
 	for (Tile * t : m_tiles) {
 		t->update(dt);
 	}
@@ -120,6 +127,8 @@ void Game::update(sf::Int32 dt)
 void Game::render()
 {
 	m_window.clear();
+
+	m_testShape->render(m_window);
 
 	//m_test.render(m_window);
 
