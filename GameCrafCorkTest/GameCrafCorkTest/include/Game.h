@@ -27,11 +27,11 @@ private:
 	const int m_rows = 20;
 	const int m_columns = 20;
 
-	sf::Texture m_scoreTexture;
-	sf::Texture m_levelTexture;
+	sf::Texture m_frameTexture;
 
 	sf::RectangleShape m_scoreSprite;
 	sf::RectangleShape m_levelSprite;
+	sf::RectangleShape m_nextSprite;
 
 	sf::Font m_font;
 	sf::Text m_scoreText;

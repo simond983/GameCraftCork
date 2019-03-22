@@ -19,15 +19,23 @@ Game::Game() : m_window(sf::VideoMode(600, 600), "GameCraft2019", sf::Style::Def
 		m_tiles.push_back(new Tile(sf::Vector2f(11 * 30, i * 30), false, sf::Color::Magenta));
 	}
 
-	m_scoreSprite.setTexture(&m_scoreTexture);
-	m_levelSprite.setTexture(&m_levelTexture);
+	m_frameTexture.loadFromFile("assets/Frame.png");
 
-	m_scoreSprite.setPosition(sf::Vector2f(0,0));
-	m_levelSprite.setPosition(sf::Vector2f(0, 0));
+	m_scoreSprite.setTexture(&m_frameTexture);
+	m_levelSprite.setTexture(&m_frameTexture);
+	m_nextSprite.setTexture(&m_frameTexture);
+
+	m_scoreSprite.setSize(sf::Vector2f(250.0f, 150.0f));
+	m_levelSprite.setSize(sf::Vector2f(250.0f, 150.0f));
+	m_nextSprite.setSize(sf::Vector2f(250.0f, 150.0f));
+
+	m_scoreSprite.setPosition(sf::Vector2f(350,75));
+	m_levelSprite.setPosition(sf::Vector2f(350, 250));
+	m_nextSprite.setPosition(sf::Vector2f(350, 425));
 
 	m_font.loadFromFile("arial.ttf");
-	setUpText(m_scoreText, sf::Vector2f(400, 100), "Score: ");
-	setUpText(m_levelText, sf::Vector2f(400, 250), "Level: ");
+	setUpText(m_scoreText, sf::Vector2f(375, 125), "Score: ");
+	setUpText(m_levelText, sf::Vector2f(375, 300), "Level: ");
 	setUpText(m_nextBlockText, sf::Vector2f(400, 400), "Next Block: ");
 }
 
@@ -115,6 +123,7 @@ void Game::render()
 
 	m_window.draw(m_scoreSprite);
 	m_window.draw(m_levelSprite);
+	m_window.draw(m_nextSprite);
 
 	m_window.draw(m_scoreText);
 	m_window.draw(m_levelText);
