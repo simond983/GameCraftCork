@@ -15,6 +15,9 @@ Shape::Shape(std::string type, sf::Vector2f pos) :
 	m_position(pos)	
 {
 	getShape();
+	m_falling = true;
+	m_fallDelay = 1000;
+	m_fallTimer = 0;
 }
 
 ///<summary>
@@ -32,6 +35,19 @@ void Shape::update(sf::Int32 dt)
 	for (int i = 0; i < NUM_TILES; i++)
 	{
 		m_shapeTiles.at(i)->update(dt);
+	}
+
+	if (m_falling)
+	{
+
+		m_fallTimer += dt;
+
+		if (m_fallTimer > m_fallDelay)
+		{
+			m_position.y += Tile::GetHeight();
+			this->setPosition(m_position);
+			m_fallTimer = 0;
+		}
 	}
 }
 

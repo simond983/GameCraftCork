@@ -43,6 +43,10 @@ private:
 	sf::Vector2f m_position;
 	std::string m_type;
 
+	sf::Int32 m_fallTimer;
+	sf::Int32 m_fallDelay;
+	bool m_falling;
+
 	const int NUM_TILES = 4;
 };
 #endif // !TILECOLLECTION_H

@@ -41,22 +41,7 @@ Tile::~Tile()
 ///</summary>
 void Tile::update(sf::Int32 dt)
 {
-	if (m_falling)
-	{
-
-		m_fallTimer += dt;
-
-		if (m_fallTimer > m_fallDelay)
-		{
-			m_position.y += HEIGHT;
-			m_fallTimer = 0;
-		}
-
-		
-	}
-
 	m_sprite.setPosition(m_position);
-
 }
 
 ///<summary>
